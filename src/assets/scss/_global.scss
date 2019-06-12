@@ -1,0 +1,25 @@
+html, body {
+  font-family: 'Exo', sans-serif;
+}
+
+section.page {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 55px;
+}
+
+/*background colors, colors */
+.bg-tertiary {
+  background-color: var(--ion-color-tertiary);
+}
+
+/*layout*/
+.push {
+  margin: 15px;
+  &.extra {
+    margin: 25px;
+  }
+}
+.flex {
+  display: flex
+}
