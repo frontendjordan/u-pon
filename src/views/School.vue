@@ -1,15 +1,34 @@
 <template>
   <section class="ion-page page school">
     <ion-content class="ion-padding">
-      <div class="flex push venue-sort">
-        <h1>{{school.name}}</h1>
+      <h1>{{school.name}}</h1>
+      <div class="flex push venue-toggle-sort">
+        <ion-item>
+          <ion-text class="ion-text-uppercase">Featured</ion-text>
+          <ion-toggle color="medium" v-model="list" @ionChange="adjustVenues"></ion-toggle>
+          <ion-text class="ion-text-uppercase">All</ion-text>
+        </ion-item>
         <div class="sorter" @click="sort()">
           <ion-icon name="swap" size="large"></ion-icon>
         </div>
       </div>
-      <ion-list>
-        <!-- eventual card here with v-if="!venues" when data coming from an API -->
-        <!-- <ion-skeleton-text animated></ion-skeleton-text> -->
+      <!-- eventual card here with v-if="!venues" when data coming from an API -->
+      <!-- <ion-skeleton-text animated></ion-skeleton-text> -->
+      <ion-list v-if="list === 'featured'">
+        <ion-card v-for="venue in featuredVenues" :key="venue.id" @click="showDeal(venue)">
+          <ion-card-header>
+            <div class="flex">
+              <ion-card-title>{{venue.name}}</ion-card-title>
+              <ion-icon :name="setCardDetails(venue.venue_type, 'icon')"></ion-icon>
+            </div>
+            <ion-text class="ion-text-uppercase">{{venue.venue_type}}</ion-text>
+            <ion-img v-if="venue.photo" :src="venue.photo"  alt=""></ion-img>
+            <ion-img v-else :src="setCardDetails(venue.venue_type, 'image')" alt=""></ion-img>
+            <ion-text class="ion-text-uppercase" color="tertiary">Tap to view deal</ion-text>
+          </ion-card-header>  
+        </ion-card>
+      </ion-list>
+      <ion-list v-else>
         <ion-card v-for="venue in venues" :key="venue.id" @click="showDeal(venue)">
           <ion-card-header>
             <div class="flex">
@@ -23,18 +42,6 @@
           </ion-card-header>          
         </ion-card>
       </ion-list>
-
-
-      <!-- Eventual list of categories for some larger schools -->
-      <!-- <ion-list>
-        <ion-item detail="true" button v-for="(category, idx) in categories" :key="idx">
-          <ion-ripple-effect></ion-ripple-effect>
-          <router-link class="flex" :to="`/${school.name}/${category.name}`">
-            <ion-text color="tertiary"><p>{{category.name}}</p></ion-text>
-          </router-link>
-          <ion-badge color="light" slot="start">{{venueCount(category)}}</ion-badge>
-        </ion-item>
-      </ion-list> -->
       <go-back />
     </ion-content>
   </section>
@@ -48,33 +55,24 @@ export default {
   name: 'school',
   data() {
     return {
-      order: 'ascending',
-      backupImages: [
-        { src: require('@/assets/img/venues/bars_default.jpg') },
-        { src: require('@/assets/img/venues/restaurants_default.jpg') }
-      ]
+      list: 'featured',
+      order: 'ascending'
     }
   },
   computed: {
-    // categories() {
-    //   return this.$store.getters.availableCategories(this.school);
-    // },
     featuredVenues() {
-      //show featured at the top - how does sorting a-z work...
-      //return
+      return this.$store.getters.featuredVenues(this.venues);
     },
     venues() {
       return this.$store.getters.schoolVenues(this.school);
     },
     school() {
-      //ionic storage - local storage things?
-      //https://ionicframework.com/docs/building/storage
       //return this.$store.state.activeSchool; //production style
       return this.$store.state.schools.filter(school => school.name === this.$router.currentRoute.params.school)[0];
     }
   },
   created() {
-    console.log(this.school);
+    //console.log(this.school);
   },
   methods: {
     showDeal(venue) {
@@ -94,12 +92,12 @@ export default {
       this.order = this.order === 'ascending' ? 'descending' : 'ascending';
       this.$store.commit('setVenueOrder', this.order);
     },
+    adjustVenues($evt) {
+      $evt.detail.checked ? this.list = 'all' : this.list = 'featured';
+    },
     setCardDetails(venueType, property) {
       return this.$store.state.venueCategories.find(category => category.name.indexOf(venueType) != -1)[property];
     }
-    // venueCount(category) {
-    //   return this.$store.getters.venueCount(this.school, category.name);
-    // }
   },
   components: { DealModal, GoBack }
 }
@@ -110,7 +108,23 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
-.venue-sort {
+.venue-toggle-sort {
+  ion-item {
+    width: 75%;
+  }
+  ion-text{
+    font-size: .7rem;
+    opacity: 1;
+    transition: opacity .25s linear;
+    &.fade {
+      opacity: .35;
+    }
+  }
+  ion-toggle {
+    margin: 0 10px;
+    --handle-background: var(--ion-color-light);
+    --background: var(--ion-color-medium);
+  }
   .sorter {
     transform: rotate(90deg);
     border-radius: 50%;
@@ -122,7 +136,7 @@ export default {
 h1 {
   color: var(--ion-color-primary);
   font-weight: 700;
-  padding-bottom: 5px;
+  margin: 20px 15px
 }
 ion-list {
   margin: 15px 0 115px;
@@ -133,15 +147,4 @@ ion-card ion-icon {
 ion-img {
   margin: 10px 0 25px;
 }
-/*categories styling*/
-// ion-badge {
-//   border: 1px solid;
-//   --padding-start: .35rem;
-//   --padding-end: .35rem;
-// }
-// a {
-//   align-items: center;
-//   width: 100%;
-//   height: 100%;
-// }
 </style>

@@ -2,11 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import shortid from 'shortid' //until CMS
 
-//may need to look into google cloud storage that comes with firebase..
-//import gcloud from '@google-cloud/storage'
-
-
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -138,6 +133,9 @@ export default new Vuex.Store({
 
   },
   getters: {
+    featuredVenues: () => (venues) => {
+      return venues.filter(venue => venue.is_featured);
+    },
     schoolVenues: (state) => (school) => {
       return school.venues.sort((a,b) => {
         if (state.venueOrder === 'ascending') {

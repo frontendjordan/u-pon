@@ -1,0 +1,7 @@
+{
+  "name": "U-Pon",
+  "id": "u-pon",
+  "integrations": {
+    "capacitor": {}
+  }
+}

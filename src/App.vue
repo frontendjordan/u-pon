@@ -7,9 +7,15 @@
 - https://firebase.google.com/docs/reference/js/firebase.storage
 
 
-- Capictor - successor to Cordova
+- Capictor
+- allows for push notifications, analytics, storage
 https://capacitor.ionicframework.com/docs/getting-started/dependencies/
 https://capacitor.ionicframework.com/docs/getting-started
+ionic youtube channel: https://www.youtube.com/channel/UChYheBnVeCfhCmqZfCUdJQw
+sample capacitor app w/ plugins: github.com/ionic-team/capacitor-plugin-demo
+
+capacitor cli [x]installed
+npx cap add ios, npx cap add android
 
 Requirements:
 
