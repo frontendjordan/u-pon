@@ -145,6 +145,10 @@ export default new Vuex.Store({
         }
       });
     },
+    activeSchool: (state) => {
+      return state.activeSchool;
+    },
+
 
     //old - with categories page first
     venueCount() {

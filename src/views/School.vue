@@ -1,11 +1,12 @@
 <template>
   <section class="ion-page page school">
+    <header-bar />
     <ion-content class="ion-padding">
       <h1>{{school.name}}</h1>
       <div class="flex push venue-toggle-sort">
         <ion-item>
           <ion-text class="ion-text-uppercase">Featured</ion-text>
-          <ion-toggle color="medium" v-model="list" @ionChange="adjustVenues"></ion-toggle>
+          <ion-toggle v-model="list" @ionChange="adjustVenues"></ion-toggle>
           <ion-text class="ion-text-uppercase">All</ion-text>
         </ion-item>
         <div class="sorter" @click="sort()">
@@ -48,8 +49,11 @@
 </template>
 
 <script>
-import DealModal from '@/components/DealModal'
-import GoBack from '@/components/GoBack'
+import HeaderBar from '@/components/HeaderBar';
+import DealModal from '@/components/DealModal';
+import GoBack from '@/components/GoBack';
+import { Plugins, DeviceInfo } from '@capacitor/core';
+import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
 
 export default {
   name: 'school',
@@ -71,9 +75,6 @@ export default {
       return this.$store.state.schools.filter(school => school.name === this.$router.currentRoute.params.school)[0];
     }
   },
-  created() {
-    //console.log(this.school);
-  },
   methods: {
     showDeal(venue) {
       return this.$ionic.modalController.create({
@@ -87,6 +88,7 @@ export default {
           }
         }
       }).then(m => m.present());
+      //Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'view_item',  parameters: { venue: venue.name }});
     },
     sort() {
       this.order = this.order === 'ascending' ? 'descending' : 'ascending';
@@ -99,7 +101,7 @@ export default {
       return this.$store.state.venueCategories.find(category => category.name.indexOf(venueType) != -1)[property];
     }
   },
-  components: { DealModal, GoBack }
+  components: { HeaderBar, DealModal, GoBack }
 }
 </script>
 
@@ -123,18 +125,22 @@ export default {
   ion-toggle {
     margin: 0 10px;
     --handle-background: var(--ion-color-light);
+    --handle-background-checked: var(--ion-color-light);
     --background: var(--ion-color-medium);
+    --background-checked: var(--ion-color-medium);
   }
   .sorter {
     transform: rotate(90deg);
     border-radius: 50%;
     padding: 8px;
+    color: var(--ion-color-medium);
     background-color: #fff;
     box-shadow: inset 2px 0px 6px rgba(0,0,0,.15);
   }
 }
 h1 {
   color: var(--ion-color-primary);
+  font-size: 2rem;
   font-weight: 700;
   margin: 20px 15px
 }

@@ -11,9 +11,3 @@ export default {
   name: 'go-back'
 }
 </script>
-
-<style lang="scss" scoped>
-ion-fab {
-  bottom: 70px !important;
-}
-</style>

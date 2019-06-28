@@ -1,5 +1,5 @@
 <template>
-  <ion-content class="ion-padding">
+  <ion-content class="ion-margin-top ion-padding">
     <ion-icon name="arrow-dropdown-circle" size="large" @click="$ionic.modalController.dismiss()"></ion-icon>
     <ion-list>
       <ion-list-header>
@@ -19,6 +19,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ion-icon {
+  margin-top: 30px;
+}
 ion-content {
   --ion-background-color: var(--ion-color-light-shade) !important;
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>450520076802-ltpoqt16eik71s3ovt6kp20plml1pqr1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.450520076802-ltpoqt16eik71s3ovt6kp20plml1pqr1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA-ONvvT0hzyhupqKBNvpYulBKeEj4SBkk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>450520076802</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.u-pon</string>
+	<key>PROJECT_ID</key>
+	<string>u-pon-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>u-pon-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:450520076802:ios:ca210aa86f4be52c</string>
+	<key>DATABASE_URL</key>
+	<string>https://u-pon-app.firebaseio.com</string>
+</dict>
+</plist>
