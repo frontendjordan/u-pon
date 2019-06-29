@@ -13,12 +13,11 @@ https://capacitor.ionicframework.com/docs/getting-started
 Requirements:
 
 iOS:
-CocoaPods - [x]installed globablly on machine, need to run pod repo update here
-Xcode Command Line tools
+CocoaPods - [x]installed globablly on machine, need to run pod repo update here ??
 
 Android: 
 Java 8 JDK - must be set to default
-Android SDK with Android Studio
+Android SDK with [x]Android Studio
 
 
 - Push notifications: https://ionicframework.com/docs/native/push
@@ -35,14 +34,15 @@ TODO: events - user tapping a school on home, tapping a venue on /school
 https://ionicframework.com/docs/native/firebase-analytics/
 https://github.com/philmerrell/capacitor-firebase-analytics
 
-"name", ["key" : "value"] pairs
-firebase has pre-defined events it can pick up on - 
-view_item
+firebase has pre-defined events it can pick up on - view_item
 
 - Working with Xcode
 to open Xcode: ionic capacitor open ios
 to get latest changes to Xcode: npm run build, ionic capacitor copy ios
 to open up simulator: plug in phone and choose the my device at the top of the list (button to right of play/stop buttons)
+
+- Working with Android Studio
+https://capacitor.ionicframework.com/docs/android/
 
 
 
