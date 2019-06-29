@@ -5,6 +5,7 @@
 App/build
 App/Pods
 App/public
+App/GoogleService-Info.plist
 xcuserdata
 
 # Cordova plugins for Capacitor
