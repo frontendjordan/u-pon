@@ -52,8 +52,7 @@
 import HeaderBar from '@/components/HeaderBar';
 import DealModal from '@/components/DealModal';
 import GoBack from '@/components/GoBack';
-import { Plugins, DeviceInfo } from '@capacitor/core';
-import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
+import { Plugins } from '@capacitor/core';
 
 export default {
   name: 'school',
@@ -88,7 +87,7 @@ export default {
           }
         }
       }).then(m => m.present());
-      //Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'view_item',  parameters: { venue: venue.name }});
+      //CapacitorFirebaseAnalytics.logEvent({ name: 'view_item',  parameters: { venue: venue.name }});
     },
     sort() {
       this.order = this.order === 'ascending' ? 'descending' : 'ascending';

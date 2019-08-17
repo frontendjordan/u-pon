@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import shortid from 'shortid' //until CMS
+import Schools from '@/data/Schools.json'
 
 Vue.use(Vuex)
 
@@ -14,116 +15,7 @@ export default new Vuex.Store({
       {name: 'clothing', icon: 'pricetag', image: 'https://res.cloudinary.com/dbziywm3d/image/upload/v1560293116/clothing_default_hjndfr.jpg'}, 
       {name: 'lifestyle', icon: 'cut', image: 'https://res.cloudinary.com/dbziywm3d/image/upload/v1560293455/lifestyle_default_d4db70.jpg'}
     ],
-    schools: [
-
-      //Pitt State
-      {
-        name: 'Pittsburg State',
-        state: 'Kansas',
-        venues: [
-          {
-            id: shortid.generate(),
-            name: "Annie's Bar",
-            venue_type: 'bar',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(3) * 50),
-              description: `This month's deal is buy one bucket of beer at full price, get a second bucket for $5. Domestics only.`,
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: true
-          },
-          {
-            id: shortid.generate(),
-            name: "Bill's Tavern",
-            venue_type: 'bar',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: true
-          },
-          {
-            id: shortid.generate(),
-            name: "Charlie's Rooftop",
-            venue_type: 'bar',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: true
-          },
-          {
-            id: shortid.generate(),
-            name: 'Test Restaurant 1',
-            venue_type: 'restaurant',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: false           
-          },
-          {
-            id: shortid.generate(),
-            name: 'Test Clothing 1',
-            venue_type: 'clothing',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: false             
-          },
-          {
-            id: shortid.generate(),
-            name: 'Test Lifestyle 1',
-            venue_type: 'lifestyle',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: false             
-          },
-        ]
-      },
-
-      //UMKC
-      {
-        name: 'UMKC',
-        state: 'Missouri',
-        venues: [
-          {
-            id: shortid.generate(),
-            name: 'Test Lifestyle 1',
-            venue_type: 'lifestyle',
-            photo: '',
-            active_deal: {
-              price: (Math.random().toFixed(2) * 10),
-              description: '',
-              start_date: '',
-              end_date: ''
-            },
-            is_featured: 'true'
-          }          
-        ]
-      }
-
-    ]
+    schools: Schools
   },
   mutations: {
     setActiveSchool: (state, payload) => (state.activeSchool = payload),

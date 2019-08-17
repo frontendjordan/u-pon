@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Avila",
+    "state": "Kansas",
+    "venues": [
+      {
+        "id": "",
+        "name" : "Avila Eatery",
+        "venue_type": "restaurant",
+        "photo": "",
+        "active_deal": {
+          "price" : "",
+          "description": "",
+          "start_date": "",
+          "end_date": ""
+        },
+        "is_featured": true        
+      }
+    ]    
+  },
+  {
+    "name": "Pittsburg State",
+    "state": "Kansas",
+    "venues": [
+      {
+        "id": "",
+        "name" : "Annie's Bar",
+        "venue_type": "bar",
+        "photo": "",
+        "active_deal": {
+          "price" : "",
+          "description": "",
+          "start_date": "",
+          "end_date": ""
+        },
+        "is_featured": true        
+      }
+    ]    
+  },
+  {
+    "name": "UMKC",
+    "state": "Missouri",
+    "venues": [
+      {
+        "id": "",
+        "name": "Test Lifestyle 1",
+        "venue_type": "lifestyle",
+        "photo": "",
+        "active_deal": {
+          "price": "",
+          "description": "",
+          "start_date": "",
+          "end_date": ""
+        },
+        "is_featured": true
+      }
+    ]    
+  },
+  {
+    "name": "JCCC",
+    "state": "Kansas",
+    "venues": [
+      {
+        "id": "",
+        "name": "Test Lifestyle 2",
+        "venue_type": "lifestyle",
+        "photo": "",
+        "active_deal": {
+          "price": "",
+          "description": "",
+          "start_date": "",
+          "end_date": ""
+        },
+        "is_featured": true
+      }
+    ]    
+  }
+]

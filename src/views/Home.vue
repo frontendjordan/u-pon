@@ -25,10 +25,24 @@
 <script>
 import HeaderBar from '@/components/HeaderBar';
 import { mapState, mapGetters } from 'vuex';
-import { Plugins, DeviceInfo } from '@capacitor/core';
+import { 
+  Plugins,
+  DeviceInfo, 
+  PushNotification, PushNotificationToken, PushNotificationActionPerformed 
+} from '@capacitor/core';
 import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
 
-//const { FirebaseAnalytics } = Plugins;
+const { PushNotifications } = Plugins;
+//const { CapacitorFirebaseAnalytics } = Plugins;
+
+//need to enable push notifications in Xcode
+
+//reverting back to working standard Firebase/Analytics:
+//cd .. to go up a level
+//when messing with this analytics stuff, pod install and pod update are the two commands
+
+//if trying the CapacitorFirebaseAnalytics:
+//do the npm install, run a pod install, pod update, npx cap sync..
 
 export default {
   name: 'home',
@@ -45,6 +59,8 @@ export default {
     }
   },
   created() {
+    PushNotifications.register();
+
     if (this.hasDefaultSchool) {
       let data = { target: { value: localStorage.getItem('school') } };
       this.schoolSelect(data);
@@ -79,10 +95,9 @@ export default {
     },
     schoolSelect($evt) {
       this.school = this.schools.find(school => school.name === $evt.target.value.trim());
-
       if (!this.hasDefaultSchool || this.school != this.$store.state.activeSchool) {
         this.showSchoolAlert(this.school);
-        //Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school }});
+        //Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
       }
 
       this.$store.commit('setActiveSchool', this.school);

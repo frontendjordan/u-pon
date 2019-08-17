@@ -4,8 +4,6 @@ to get newer versions of ionic vue: npm uninstall @ionic/vue, npm install @ionic
 
 ionic youtube channel: https://www.youtube.com/channel/UChYheBnVeCfhCmqZfCUdJQw
 
-https://capacitor.ionicframework.com/docs/apis/splash-screen/#hiding-the-splash-screen
-
 -- Capacitor
 https://capacitor.ionicframework.com/docs/getting-started/dependencies/
 https://capacitor.ionicframework.com/docs/getting-started
@@ -16,35 +14,47 @@ iOS:
 CocoaPods - [x]installed globablly on machine, need to run pod repo update here ??
 
 Android: 
-Java 8 JDK - must be set to default
-Android SDK with [x]Android Studio
+
+https://ionicframework.com/docs/installation/android
+
+[x]Java 8
+[x]Gradle 
+[x]Android SDK with Android Studio
 
 
 - Push notifications: https://ionicframework.com/docs/native/push
 - https://capacitor.ionicframework.com/docs/guides/push-notifications-firebase/
-
+- https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns
 
 
 - Firebase Analytics Steps
 1.) https://firebase.google.com/docs/ios/setup?authuser=1
 
-iOS initial install, DONE
-TODO: events - user tapping a school on home, tapping a venue on /school
 
-https://ionicframework.com/docs/native/firebase-analytics/
-https://github.com/philmerrell/capacitor-firebase-analytics
+https://github.com/chemerisuk/cordova-plugin-firebase-analytics
+https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins/
 
-firebase has pre-defined events it can pick up on - view_item
+
+firebase has pre-defined events it can pick up on - 
+view_item - item_id, item_location_id
+select_content - when a user has selected content in an app -	takes: content_type, item_id
 
 - Working with Xcode
 to open Xcode: ionic capacitor open ios
 to get latest changes to Xcode: npm run build, ionic capacitor copy ios
-to open up simulator: plug in phone and choose the my device at the top of the list (button to right of play/stop buttons)
+PRO TIP: ionic capacitor run ios - combines everything above
 
 - Working with Android Studio
 https://capacitor.ionicframework.com/docs/android/
 
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.5.1-bin.zip
+//4.10.1 changed to 3.4.1 in gradle > wrapper > gradle.wrapper.properties
 
+
+
+-- App splash screen and icons info
+https://www.joshmorony.com/adding-icons-splash-screens-launch-images-to-capacitor-projects/
+https://capacitor.ionicframework.com/docs/apis/splash-screen/#hiding-the-splash-screen
 
 -- Database/CMS
 - Contentful?
