@@ -1,7 +1,59 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import shortid from 'shortid' //until CMS
-import Schools from '@/data/Schools.json'
+import firebase from '@firebase/app'
+//import '@firebase/auth'
+//import '@firebase/storage'
+import '@firebase/firestore'
+
+//gitignore?
+const firebaseConfig = {
+  apiKey: "AIzaSyCK46Mf9rJ4OPSN2I6mghUC3euSIhHxWTo",
+  authDomain: "u-pon-app.firebaseapp.com",
+  databaseURL: "https://u-pon-app.firebaseio.com",
+  projectId: "u-pon-app",
+  storageBucket: "u-pon-app.appspot.com",
+  messagingSenderId: "450520076802",
+  appId: "1:450520076802:web:3efd9cd061a465e7"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+//const auth = firebase.auth();
+//const storage = firebase.app().storage('gs://u-pon-app.appspot.com');
+//const storage = firebase.storage();
+//const storageRef = storage.ref();
+const db = firebase.firestore();
+
+//in vuex action
+//let schoolsRef = storage.ref().child('schools');
+//console.log(schoolsRef);
+// schoolsRef.listAll().then(function(result) {
+//   result.items.forEach(function(imageRef) {
+//     console.log(imageRef);
+//   });
+// }).catch(err => {
+//   console.log(err);
+// });
+
+
+//firebase cloud messaging for push notifications
+
+
+//Firebase Cloud Functions
+//run on the sever, good for hiding code you don't want to expose on the front end
+//perform tasks not available to people on the client side
+//callable from the front end
+
+
+//https://firebase.google.com/docs/rules/manage-deploy
+
+//set these values in a file that is .gitignored?
+//auth.signInWithEmailAndPassword('jordanwmarshall@gmail.com', '').then(cred => {
+  //console.log(cred);
+  // let user = firebase.auth().currentUser;
+  // console.log(user);
+//});
+
 
 Vue.use(Vuex)
 
@@ -15,14 +67,22 @@ export default new Vuex.Store({
       {name: 'clothing', icon: 'pricetag', image: 'https://res.cloudinary.com/dbziywm3d/image/upload/v1560293116/clothing_default_hjndfr.jpg'}, 
       {name: 'lifestyle', icon: 'cut', image: 'https://res.cloudinary.com/dbziywm3d/image/upload/v1560293455/lifestyle_default_d4db70.jpg'}
     ],
-    schools: Schools
+    schools: []
   },
   mutations: {
     setActiveSchool: (state, payload) => (state.activeSchool = payload),
-    setVenueOrder: (state, payload) => (state.venueOrder = payload)
+    setVenueOrder: (state, payload) => (state.venueOrder = payload),
+    setSchools: (state, payload) => (state.schools = payload)
   },
   actions: {
-
+    getSchools: async ({ commit }) => {
+      let snapshot = await db.collection('schools').get();
+      let schools = snapshot.docs.map(doc => doc.data());
+      commit('setSchools', schools);
+    },
+    getFirebaseStorage: async ({ commit }) => {
+      //call in App.vue created hook?
+    }
   },
   getters: {
     featuredVenues: () => (venues) => {

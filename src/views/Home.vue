@@ -4,7 +4,7 @@
     <ion-content>
       <div class="home">
         <ion-text v-if="hasDefaultSchool" color="light">Your default school is:</ion-text>
-        <div v-if="hasDefaultSchool" class="flex flex-center default-school">
+        <div v-if="hasDefaultSchool && activeSchool" class="flex flex-center default-school">
           <ion-text color="primary">{{activeSchool.name}}</ion-text>
           <ion-button color="light" size="small" @click="clearDefaultSchool()">Clear</ion-button>
         </div>
@@ -24,17 +24,17 @@
 
 <script>
 import HeaderBar from '@/components/HeaderBar';
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
+import AnalyticsHelper from '../assets/js/AnalyticsHelper';
 import { 
   Plugins,
   DeviceInfo, 
   PushNotification, PushNotificationToken, PushNotificationActionPerformed 
 } from '@capacitor/core';
-import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
 
-const { PushNotifications } = Plugins;
-//const { CapacitorFirebaseAnalytics } = Plugins;
+//import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
 
+//const { PushNotifications } = Plugins;
 //need to enable push notifications in Xcode
 
 //reverting back to working standard Firebase/Analytics:
@@ -59,14 +59,16 @@ export default {
     }
   },
   created() {
-    PushNotifications.register();
-
-    if (this.hasDefaultSchool) {
-      let data = { target: { value: localStorage.getItem('school') } };
-      this.schoolSelect(data);
-    }
+    this.getSchools().then(() => {
+      if (this.hasDefaultSchool) {
+        let data = { target: { value: localStorage.getItem('school') } };
+        this.schoolSelect(data);
+      }
+    });
+    //PushNotifications.register();
   },
   methods: {
+    ...mapActions(['getSchools']),
     clearDefaultSchool() {
       localStorage.removeItem('school');
       this.$router.go();
@@ -95,12 +97,22 @@ export default {
     },
     schoolSelect($evt) {
       this.school = this.schools.find(school => school.name === $evt.target.value.trim());
-      if (!this.hasDefaultSchool || this.school != this.$store.state.activeSchool) {
-        this.showSchoolAlert(this.school);
-        //Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
-      }
-
       this.$store.commit('setActiveSchool', this.school);
+
+      if (!this.hasDefaultSchool || this.school.name != this.$store.state.activeSchool.name) {
+        this.showSchoolAlert(this.school);
+        AnalyticsHelper.logEvent('school_select', {params: {school: this.school.name }});
+        //CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
+
+        //try making a new .swift file in ios/App/App -- matches github repo
+        //https://firebase.google.com/docs/analytics/ios/webview
+        //https://github.com/firebase/analytics-webview/blob/master/web/public/index.js
+
+
+
+
+
+      }      
     }
   },
   components: { HeaderBar }
