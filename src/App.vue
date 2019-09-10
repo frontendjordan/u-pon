@@ -1,7 +1,5 @@
 <!--NOTES
 
-to get newer versions of ionic vue: npm uninstall @ionic/vue, npm install @ionic/vue
-
 -- Capacitor
 https://capacitor.ionicframework.com/docs/getting-started/dependencies/
 https://capacitor.ionicframework.com/docs/getting-started
@@ -33,7 +31,6 @@ https://capacitor.ionicframework.com/docs/cordova/using-cordova-plugins/
 
 - Analytics
 firebase has pre-defined events it can pick up on - 
-view_item - item_id, item_location_id
 select_content - when a user has selected content in an app -	takes: content_type, item_id
 
 - Working with Xcode

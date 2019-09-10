@@ -101,17 +101,10 @@ export default {
 
       if (!this.hasDefaultSchool || this.school.name != this.$store.state.activeSchool.name) {
         this.showSchoolAlert(this.school);
-        AnalyticsHelper.logEvent('school_select', {params: {school: this.school.name }});
-        //CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
-
-        //try making a new .swift file in ios/App/App -- matches github repo
         //https://firebase.google.com/docs/analytics/ios/webview
         //https://github.com/firebase/analytics-webview/blob/master/web/public/index.js
-
-
-
-
-
+        AnalyticsHelper.logEvent('school_select', {school: this.school.name });
+        //CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
       }      
     }
   },

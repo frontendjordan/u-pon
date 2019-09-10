@@ -15,33 +15,8 @@
       </div>
       <!-- eventual card here with v-if="!venues" when data coming from an API -->
       <!-- <ion-skeleton-text animated></ion-skeleton-text> -->
-      <ion-list v-if="list === 'featured'">
-        <ion-card v-for="venue in featuredVenues" :key="venue.id" @click="showDeal(venue)">
-          <ion-card-header>
-            <div class="flex">
-              <ion-card-title>{{venue.name}}</ion-card-title>
-              <ion-icon :name="setCardDetails(venue.venue_type, 'icon')"></ion-icon>
-            </div>
-            <ion-text class="ion-text-uppercase">{{venue.venue_type}}</ion-text>
-            <ion-img v-if="venue.photo" :src="venue.photo"  alt=""></ion-img>
-            <ion-img v-else :src="setCardDetails(venue.venue_type, 'image')" alt=""></ion-img>
-            <ion-text class="ion-text-uppercase" color="tertiary">Tap to view deal</ion-text>
-          </ion-card-header>  
-        </ion-card>
-      </ion-list>
-      <ion-list v-else>
-        <ion-card v-for="venue in venues" :key="venue.id" @click="showDeal(venue)">
-          <ion-card-header>
-            <div class="flex">
-              <ion-card-title>{{venue.name}}</ion-card-title>
-              <ion-icon :name="setCardDetails(venue.venue_type, 'icon')"></ion-icon>
-            </div>
-            <ion-text class="ion-text-uppercase">{{venue.venue_type}}</ion-text>
-            <ion-img v-if="venue.photo" :src="venue.photo"  alt=""></ion-img>
-            <ion-img v-else :src="setCardDetails(venue.venue_type, 'image')" alt=""></ion-img>
-            <ion-text class="ion-text-uppercase" color="tertiary">Tap to view deal</ion-text>
-          </ion-card-header>          
-        </ion-card>
+      <ion-list>
+        <venue-card v-for="venue in venues" :key="venue.id" :venue="venue" />
       </ion-list>
       <go-back />
     </ion-content>
@@ -49,7 +24,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import HeaderBar from '@/components/HeaderBar';
+import VenueCard from '@/components/VenueCard';
 import DealModal from '@/components/DealModal';
 import GoBack from '@/components/GoBack';
 import { Plugins } from '@capacitor/core';
@@ -58,49 +35,28 @@ export default {
   name: 'school',
   data() {
     return {
-      list: 'featured',
       order: 'ascending'
     }
   },
   computed: {
-    featuredVenues() {
-      return this.$store.getters.featuredVenues(this.venues);
-    },
+    ...mapState({
+      school: state => state.activeSchool,
+      list: state => state.venueList
+    }),
     venues() {
       return this.$store.getters.schoolVenues(this.school);
-    },
-    school() {
-      //return this.$store.state.activeSchool; //production style
-      return this.$store.state.schools.filter(school => school.name === this.$router.currentRoute.params.school)[0];
     }
   },
   methods: {
-    showDeal(venue) {
-      return this.$ionic.modalController.create({
-        component: DealModal,
-        componentProps: {
-          data: {
-            content: 'New Content',
-          },
-          propsData: {
-            venue
-          }
-        }
-      }).then(m => m.present());
-      //CapacitorFirebaseAnalytics.logEvent({ name: 'view_item',  parameters: { venue: venue.name }});
-    },
     sort() {
       this.order = this.order === 'ascending' ? 'descending' : 'ascending';
       this.$store.commit('setVenueOrder', this.order);
     },
     adjustVenues($evt) {
-      $evt.detail.checked ? this.list = 'all' : this.list = 'featured';
-    },
-    setCardDetails(venueType, property) {
-      return this.$store.state.venueCategories.find(category => category.name.indexOf(venueType) != -1)[property];
+      $evt.detail.checked ? this.$store.commit('setVenueList', 'all') : this.$store.commit('setVenueList', 'featured');
     }
   },
-  components: { HeaderBar, DealModal, GoBack }
+  components: { HeaderBar, VenueCard, DealModal, GoBack }
 }
 </script>
 
@@ -145,11 +101,5 @@ h1 {
 }
 ion-list {
   margin: 15px 0 115px;
-}
-ion-card ion-icon {
-  transform: scale(1.4);
-}
-ion-img {
-  margin: 10px 0 25px;
 }
 </style>
