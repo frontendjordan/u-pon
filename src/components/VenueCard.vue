@@ -1,5 +1,12 @@
 <template>
-  <ion-card @click="showDeal(venue)">
+  <ion-card v-if="!venue">
+    <ion-card-header>
+      <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+      <ion-skeleton-text animated class="img-skeleton" style="width: 100%"></ion-skeleton-text>
+    </ion-card-header>
+  </ion-card>
+  <ion-card v-else @click="showDeal(venue)">
     <ion-card-header>
       <div class="flex">
         <ion-card-title>{{venue.name}}</ion-card-title>
@@ -28,9 +35,7 @@ export default {
           data: {
             content: 'New Content',
           },
-          propsData: {
-            venue
-          }
+          propsData: { venue }
         }
       }).then(m => m.present());
     },
@@ -51,5 +56,11 @@ ion-card ion-icon {
 }
 ion-img {
   margin: 10px 0 25px;
+}
+ion-skeleton-text {
+  margin-bottom: 10px;
+  &.img-skeleton {
+    line-height: 10rem;
+  }
 }
 </style>

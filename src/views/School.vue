@@ -13,8 +13,6 @@
           <ion-icon name="swap" size="large"></ion-icon>
         </div>
       </div>
-      <!-- eventual card here with v-if="!venues" when data coming from an API -->
-      <!-- <ion-skeleton-text animated></ion-skeleton-text> -->
       <ion-list>
         <venue-card v-for="venue in venues" :key="venue.id" :venue="venue" />
       </ion-list>
