@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import DealModal from '@/components/DealModal';
 import AnalyticsHelper from '../assets/js/AnalyticsHelper';
 
 export default {

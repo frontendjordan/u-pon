@@ -7,6 +7,8 @@
       </ion-list-header>
       <ion-text>{{venue.name}}</ion-text>
       <ion-item>{{venue.active_deal.description}}</ion-item>
+      <!-- href attr, link to google maps? -->
+      <ion-anchor>{{venueAddress}}</ion-anchor>
     </ion-list>
   </ion-content>
 </template>
@@ -14,7 +16,12 @@
 <script>
 export default {
   name: 'deal-modal',
-  props: ['venue']
+  props: ['venue'],
+  computed: {
+    venueAddress() {
+      return `${this.venue.address.street} ${this.venue.address.city}, ${this.venue.address.short_state} ${this.venue.address.zip}`
+    }
+  }
 }
 </script>
 
@@ -27,6 +34,7 @@ ion-content {
 }
 ion-list {
   margin-top: 25px;
+  padding: 0 25px;
 }
 ion-list-header {
   --color: var(--ion-color-primary);
@@ -40,5 +48,9 @@ ion-text {
 ion-item {
   padding: 15px 0;
   line-height: 20px;
+}
+ion-anchor {
+  padding-left: 16px;
+  font-size: .85rem;
 }
 </style>

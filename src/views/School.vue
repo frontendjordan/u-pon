@@ -14,7 +14,7 @@
         </div>
       </div>
       <ion-list>
-        <venue-card v-for="venue in venues" :key="venue.id" :venue="venue" />
+        <venue-card v-for="venue in venues" :key="venue.id" :school="school" :venue="venue" />
       </ion-list>
       <go-back />
     </ion-content>
@@ -25,7 +25,6 @@
 import { mapState } from 'vuex';
 import HeaderBar from '@/components/HeaderBar';
 import VenueCard from '@/components/VenueCard';
-import DealModal from '@/components/DealModal';
 import GoBack from '@/components/GoBack';
 import { Plugins } from '@capacitor/core';
 
@@ -54,7 +53,7 @@ export default {
       $evt.detail.checked ? this.$store.commit('setVenueList', 'all') : this.$store.commit('setVenueList', 'featured');
     }
   },
-  components: { HeaderBar, VenueCard, DealModal, GoBack }
+  components: { HeaderBar, VenueCard, GoBack }
 }
 </script>
 
