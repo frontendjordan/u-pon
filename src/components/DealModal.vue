@@ -7,19 +7,25 @@
       </ion-list-header>
       <ion-text>{{venue.name}}</ion-text>
       <ion-item>{{venue.active_deal.description}}</ion-item>
-      <!-- href attr, link to google maps? -->
-      <ion-anchor>{{venueAddress}}</ion-anchor>
+      <ion-anchor @click="openGoogleMaps()">{{venueAddress}}</ion-anchor>
     </ion-list>
   </ion-content>
 </template>
 
 <script>
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 export default {
   name: 'deal-modal',
   props: ['venue'],
   computed: {
     venueAddress() {
       return `${this.venue.address.street} ${this.venue.address.city}, ${this.venue.address.short_state} ${this.venue.address.zip}`
+    }
+  },
+  methods: {
+    openGoogleMaps() {
+      InAppBrowser.create('https://www.google.com', '_blank');
     }
   }
 }
