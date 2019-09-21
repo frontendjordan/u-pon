@@ -1,21 +1,5 @@
 <!--NOTES
 
--- Capacitor
-https://capacitor.ionicframework.com/docs/getting-started/dependencies/
-https://capacitor.ionicframework.com/docs/getting-started
-
-Requirements:
-
-iOS:
-CocoaPods
-
-Android: 
-https://ionicframework.com/docs/installation/android
-[x]Java 8
-[x]Gradle 
-[x]Android SDK with Android Studio
-
-
 - Push notifications: https://ionicframework.com/docs/native/push
 - https://capacitor.ionicframework.com/docs/guides/push-notifications-firebase/
 - https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns

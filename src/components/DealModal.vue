@@ -25,8 +25,6 @@ export default {
   },
   methods: {
     openGoogleMaps() {
-      //in a new branch address-google-maps
-      //could use lat/long
       let noComma = this.venueAddress.replace(',', '%2C');
       let formattedAddr = noComma.replace(/ /g, '+');
       InAppBrowser.create(`https://www.google.com/maps/search/?api=1&query=${formattedAddr}`, '_blank');
