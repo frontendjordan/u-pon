@@ -1,4 +1,4 @@
-package upon.app;
+package com.upon.app;
 
 import android.os.Bundle;
 

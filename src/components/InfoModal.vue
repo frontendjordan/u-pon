@@ -1,6 +1,6 @@
 <template>
   <ion-content padding class="ion-padding">
-    <ion-icon name="arrow-dropdown-circle" size="large" @click="$ionic.modalController.dismiss()"></ion-icon>
+    <ion-icon color="tertiary" name="arrow-dropdown-circle" size="large" @click="$ionic.modalController.dismiss()"></ion-icon>
     <ion-text color="secondary"><h1>{{title}}</h1></ion-text>
     <ion-text color="secondary">
       <p>U-Pon's mission is to connect college students with their local community. We advertise deals made for college students 

@@ -1,13 +1,16 @@
 <template>
   <ion-content class="ion-margin-top ion-padding">
-    <ion-icon name="arrow-dropdown-circle" size="large" @click="$ionic.modalController.dismiss()"></ion-icon>
+    <ion-icon color="tertiary" name="arrow-dropdown-circle" size="large" @click="$ionic.modalController.dismiss()"></ion-icon>
     <ion-list>
       <ion-list-header>
         <ion-label>Current Deal</ion-label>
       </ion-list-header>
       <ion-text>{{venue.name}}</ion-text>
       <ion-item>{{venue.active_deal.description}}</ion-item>
-      <ion-anchor @click="openGoogleMaps()">{{venueAddress}}</ion-anchor>
+      <div class="address flex">
+        <ion-icon color="primary" name="map"></ion-icon>
+        <ion-anchor @click="openGoogleMaps()">{{venueAddress}}</ion-anchor>
+      </div>
     </ion-list>
   </ion-content>
 </template>
@@ -35,7 +38,12 @@ export default {
 
 <style lang="scss" scoped>
 ion-icon {
-  margin-top: 30px;
+  &[name=arrow-dropdown-circle] {
+    margin-top: 30px;
+  }
+  &[name=map] {
+    font-size: 32px;
+  }
 }
 ion-content {
   --ion-background-color: var(--ion-color-light-shade) !important;
@@ -58,7 +66,10 @@ ion-item {
   line-height: 20px;
 }
 ion-anchor {
-  padding-left: 16px;
+  padding-left: 10px;
   font-size: .85rem;
+}
+.address {
+  align-items: center;
 }
 </style>
