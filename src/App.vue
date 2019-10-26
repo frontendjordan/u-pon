@@ -25,9 +25,6 @@ PRO TIP: ionic capacitor run ios - combines everything above
 - Working with Android Studio
 https://capacitor.ionicframework.com/docs/android/
 
-distributionUrl=https\://services.gradle.org/distributions/gradle-5.5.1-bin.zip
-//4.10.1 changed to 3.4.1 in gradle > wrapper > gradle.wrapper.properties
-
 
 -- App splash screen and icons info
 https://www.joshmorony.com/adding-icons-splash-screens-launch-images-to-capacitor-projects/

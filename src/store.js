@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from '@firebase/app'
-//import '@firebase/auth'
-//import '@firebase/storage'
 import '@firebase/firestore'
+
+Vue.use(Vuex);
 
 //gitignore?
 const firebaseConfig = {
@@ -22,14 +22,7 @@ const db = firebase.firestore();
 
 //firebase cloud messaging for push notifications
 
-//Firebase Cloud Functions
-//run on the server, good for hiding code you don't want to expose on the front end
-//perform tasks not available to people on the client side
-//callable from the front end
-
 //https://firebase.google.com/docs/rules/manage-deploy
-
-Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
