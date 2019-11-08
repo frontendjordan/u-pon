@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     // Initialize WebView and enable JavaScript
     mWebView = (WebView) findViewById(R.id.webview);
     mWebView.getSettings().setJavaScriptEnabled(true);
+    mWebView.getSettings().setDomStorageEnabled(true);
 
     // Restrict requests in the WebView to a single domain (in this case, our Firebase
     // Hosting domain) so that no other websites can call into our Java code.
