@@ -18,6 +18,7 @@
   } else {
 
     console.log("No native APIs found.");
+    console.log('Could not send event: ', name, params)
 
   }  
 
