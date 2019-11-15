@@ -7,7 +7,15 @@
 </template>
 
 <script>
-export default {
+  import { addIcons } from 'ionicons';
+  import { arrowRoundBack } from "ionicons/icons";
+
+  addIcons({
+    "ios-arrow-round-back": arrowRoundBack.ios,
+    "md-arrow-round-back": arrowRoundBack.md,
+  });
+
+  export default {
   name: 'go-back'
 }
 </script>

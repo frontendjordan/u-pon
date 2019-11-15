@@ -25,14 +25,13 @@
 <script>
 import HeaderBar from '@/components/HeaderBar';
 import { mapState, mapActions, mapGetters } from 'vuex';
-import AnalyticsHelper from '../assets/js/AnalyticsHelper';
+/*
 import { 
   Plugins,
   DeviceInfo, 
   PushNotification, PushNotificationToken, PushNotificationActionPerformed 
-} from '@capacitor/core';
-
-//import { CapacitorFirebaseAnalytics } from 'capacitor-firebase-analytics';
+} from '@capacitor/core'; */
+import { Plugins, SplashScreen } from '@capacitor/core';
 
 //const { PushNotifications } = Plugins;
 //need to enable push notifications in Xcode
@@ -59,12 +58,15 @@ export default {
     }
   },
   created() {
+    // console.log("event1");
+    // Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'event1',  parameters: { param1: 'bar', param2: '123' }});
     this.getSchools().then(() => {
       if (this.hasDefaultSchool) {
         let data = { target: { value: localStorage.getItem('school') } };
         this.schoolSelect(data);
       }
     });
+    SplashScreen.hide();
     //PushNotifications.register();
   },
   methods: {
@@ -103,9 +105,8 @@ export default {
         this.showSchoolAlert(this.school);
         //https://firebase.google.com/docs/analytics/ios/webview
         //https://github.com/firebase/analytics-webview/blob/master/web/public/index.js
-        AnalyticsHelper.logEvent('school_select', {school: this.school.name });
-        //CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { school: this.school.name }});
-      }      
+        Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { 'school': this.school.name }});
+      }
     }
   },
   components: { HeaderBar }

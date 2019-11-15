@@ -10,7 +10,15 @@
 </template>
 
 <script>
-export default {
+  import { addIcons } from 'ionicons';
+  import { arrowDropdownCircle } from "ionicons/icons";
+
+  addIcons({
+    "ios-arrow-dropdown-circle": arrowDropdownCircle.ios,
+    "md-arrow-dropdown-circle": arrowDropdownCircle.md,
+  });
+
+  export default {
   name: 'info-modal',
   props: ['title']
 }

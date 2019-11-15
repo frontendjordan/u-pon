@@ -36,6 +36,13 @@
 <script>
 import DealModal from '@/components/DealModal'
 import GoBack from '@/components/GoBack'
+import { addIcons } from 'ionicons';
+import { swap } from "ionicons/icons";
+
+addIcons({
+  "ios-swap": swap.ios,
+  "md-swap": swap.md,
+});
 
 export default {
   name: 'venues',

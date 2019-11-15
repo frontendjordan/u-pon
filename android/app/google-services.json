@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "450520076802",
+    "firebase_url": "https://u-pon-app.firebaseio.com",
+    "project_id": "u-pon-app",
+    "storage_bucket": "u-pon-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450520076802:android:a247d7dfd03af990c2cd1b",
+        "android_client_info": {
+          "package_name": "com.upon.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450520076802-dnka1qpt3248d4nfrjjvivdsbj1ogd3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC13DBd4h7DTfZf8Qld7DvH9uX1_O_85hE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450520076802-dnka1qpt3248d4nfrjjvivdsbj1ogd3d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "450520076802-v0ddf8htrmso2g3gvfb04oa1tp7ri4lq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.upon.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -26,7 +26,15 @@ import { mapState } from 'vuex';
 import HeaderBar from '@/components/HeaderBar';
 import VenueCard from '@/components/VenueCard';
 import GoBack from '@/components/GoBack';
-import { Plugins } from '@capacitor/core';
+// import { Plugins } from '@capacitor/core';
+import { addIcons } from 'ionicons';
+import { swap } from "ionicons/icons";
+
+addIcons({
+  "ios-swap": swap.ios,
+  "md-swap": swap.md,
+});
+
 
 export default {
   name: 'school',
