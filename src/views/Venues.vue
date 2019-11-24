@@ -62,6 +62,7 @@ export default {
       return this.backupImages.find(img => img.src.indexOf(this.$router.currentRoute.params.venueType) != -1);
     },
     categoryIcon() {
+      console.log('categoryIcon')
       return this.$store.state.venueCategories.filter(category => category.name === this.$router.currentRoute.params.venueType)[0].icon;
     },
     venues() {

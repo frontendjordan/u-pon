@@ -58,8 +58,6 @@ export default {
     }
   },
   created() {
-    // console.log("event1");
-    // Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'event1',  parameters: { param1: 'bar', param2: '123' }});
     this.getSchools().then(() => {
       if (this.hasDefaultSchool) {
         let data = { target: { value: localStorage.getItem('school') } };
@@ -100,9 +98,10 @@ export default {
     schoolSelect($evt) {
       this.school = this.schools.find(school => school.name === $evt.target.value.trim());
       this.$store.commit('setActiveSchool', this.school);
-
       if (!this.hasDefaultSchool || this.school.name != this.$store.state.activeSchool.name) {
         this.showSchoolAlert(this.school);
+        // console.log('In schoolSelect, this.school.name = ', this.school.name);
+        // console.log('In schoolSelect, this.school = ', this.school);
         //https://firebase.google.com/docs/analytics/ios/webview
         //https://github.com/firebase/analytics-webview/blob/master/web/public/index.js
         Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'school_select',  parameters: { 'school': this.school.name }});
