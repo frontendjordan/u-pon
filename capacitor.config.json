@@ -1,6 +1,6 @@
 {
   "appId": "com.upon.app",
-  "appName": "u-pon-app",
+  "appName": "U-Pon",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist"
