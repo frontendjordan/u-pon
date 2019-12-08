@@ -10,24 +10,23 @@
       <div class="address flex">
         <ion-icon color="primary" name="map"></ion-icon>
         <a @click="openGoogleMaps()">{{venueAddress}}</a>
-        <!-- <ion-anchor @click="openGoogleMaps()">{{venueAddress}}</ion-anchor> -->
       </div>
     </ion-list>
   </ion-content>
 </template>
 
 <script>
-  import { addIcons } from 'ionicons';
-  import { arrowDropdownCircle, map } from "ionicons/icons";
+import { addIcons } from 'ionicons';
+import { arrowDropdownCircle, map } from "ionicons/icons";
 
-  addIcons({
-    "ios-arrow-dropdown-circle": arrowDropdownCircle.ios,
-    "md-arrow-dropdown-circle": arrowDropdownCircle.md,
-    "ios-map": map.ios,
-    "md-map": map.md,
-  });
+addIcons({
+  "ios-arrow-dropdown-circle": arrowDropdownCircle.ios,
+  "md-arrow-dropdown-circle": arrowDropdownCircle.md,
+  "ios-map": map.ios,
+  "md-map": map.md,
+});
 
-  import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 export default {
   name: 'deal-modal',
