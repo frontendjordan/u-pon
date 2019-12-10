@@ -22,14 +22,14 @@
 
 <script>
 import DealModal from '@/components/DealModal';
-import AnalyticsHelper from '../assets/js/AnalyticsHelper';
+import { Plugins } from '@capacitor/core';
 
 export default {
   name: 'venue-card',
   props: ['venue'],
   methods: {
     showDeal(venue) {
-      AnalyticsHelper.logEvent('view_item', {'item_name': venue.name });
+      Plugins.CapacitorFirebaseAnalytics.logEvent({ name: 'view_item',  parameters: { 'item_name': venue.name }});
       return this.$ionic.modalController.create({
         component: DealModal,
         componentProps: {

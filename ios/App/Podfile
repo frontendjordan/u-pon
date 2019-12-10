@@ -10,13 +10,12 @@ def capacitor_pods
   # Automatic Capacitor Pod dependencies, do not delete
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorFirebaseAnalytics', :path => '../../node_modules/capacitor-firebase-analytics'
+  pod 'Firebase/Analytics'
   # Do not delete
-  # pod 'CapacitorFirebaseAnalytics', :path => '../../node_modules/capacitor-firebase-analytics'
 end
 
 target 'App' do
   capacitor_pods
   # Add your Pods here
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Messaging'
 end

@@ -36,6 +36,13 @@
 <script>
 import DealModal from '@/components/DealModal'
 import GoBack from '@/components/GoBack'
+import { addIcons } from 'ionicons';
+import { swap } from "ionicons/icons";
+
+addIcons({
+  "ios-swap": swap.ios,
+  "md-swap": swap.md,
+});
 
 export default {
   name: 'venues',
@@ -55,6 +62,7 @@ export default {
       return this.backupImages.find(img => img.src.indexOf(this.$router.currentRoute.params.venueType) != -1);
     },
     categoryIcon() {
+      console.log('categoryIcon')
       return this.$store.state.venueCategories.filter(category => category.name === this.$router.currentRoute.params.venueType)[0].icon;
     },
     venues() {

@@ -6,11 +6,20 @@
       <p>U-Pon's mission is to connect college students with their local community. We advertise deals made for college students 
       by college students. Check out what your local bars, restaurants, and other businesses are offering!</p>
     </ion-text>
+    <a href="https://www.u-pon.app/privacy" target="_blank">Privacy Policy</a>
   </ion-content>
 </template>
 
 <script>
-export default {
+  import { addIcons } from 'ionicons';
+  import { arrowDropdownCircle } from "ionicons/icons";
+
+  addIcons({
+    "ios-arrow-dropdown-circle": arrowDropdownCircle.ios,
+    "md-arrow-dropdown-circle": arrowDropdownCircle.md,
+  });
+
+  export default {
   name: 'info-modal',
   props: ['title']
 }
@@ -29,5 +38,9 @@ ion-text {
 }
 p {
   line-height: 1.2rem;
+}
+a {
+  color: var(--ion-color-tertiary);
+  text-decoration: underline;
 }
 </style>

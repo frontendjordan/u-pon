@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450520076802:android:c3f2372a364f5410",
+        "mobilesdk_app_id": "1:450520076802:android:a247d7dfd03af990c2cd1b",
         "android_client_info": {
           "package_name": "com.upon.app"
         }
@@ -32,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "450520076802-ltpoqt16eik71s3ovt6kp20plml1pqr1.apps.googleusercontent.com",
+              "client_id": "450520076802-v0ddf8htrmso2g3gvfb04oa1tp7ri4lq.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.u-pon"
+                "bundle_id": "com.upon.app"
               }
             }
           ]

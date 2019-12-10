@@ -3,6 +3,5 @@
     <string name="app_name">U-Pon</string>
     <string name="title_activity_main">U-Pon</string>
     <string name="package_name">com.upon.app</string>
-    <string name="fileprovider_authority">com.upon.app.fileprovider</string>
     <string name="custom_url_scheme">com.upon.app</string>
 </resources>

@@ -9,6 +9,13 @@
 
 <script>
 import InfoModal from '@/components/InfoModal';
+import { addIcons } from 'ionicons';
+import { helpCircle } from "ionicons/icons";
+
+addIcons({
+  "ios-help-circle": helpCircle.ios,
+  "md-help-circle": helpCircle.md,
+});
 
 export default {
   name: 'header-bar',
