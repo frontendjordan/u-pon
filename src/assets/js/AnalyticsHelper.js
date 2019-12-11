@@ -17,13 +17,20 @@
 
   } else {
 
+<<<<<<< HEAD
+    console.log("No native APIs found.");
+    console.log('Could not send event: ', name, params)
+=======
     // console.log("No native APIs found.");
+>>>>>>> analytics-plugin
 
   }  
 
 }
 
 export default { logEvent }
+<<<<<<< HEAD
+=======
 
 /*
  Android
@@ -78,3 +85,4 @@ export default { logEvent }
    }
  }
  */
+>>>>>>> analytics-plugin
