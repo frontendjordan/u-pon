@@ -58,10 +58,6 @@ export default {
     }
   },
   created() {
-
-    console.log("event1");
-    AnalyticsHelper.logEvent("event1", { foo: "bar", baz: 123 });
-
     this.getSchools().then(() => {
       if (this.hasDefaultSchool) {
         let data = { target: { value: localStorage.getItem('school') } };
