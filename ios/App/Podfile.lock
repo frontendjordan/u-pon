@@ -120,8 +120,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3a1d09b01fa642cf5252e1a3ace6c0c96b73aa3f
 
-<<<<<<< HEAD
-COCOAPODS: 1.7.5
-=======
 COCOAPODS: 1.8.4
->>>>>>> analytics-plugin
