@@ -31,7 +31,11 @@ import {
   DeviceInfo, 
   PushNotification, PushNotificationToken, PushNotificationActionPerformed 
 } from '@capacitor/core'; */
-import { Plugins, SplashScreen } from '@capacitor/core';
+// import { Plugins, SplashScreen } from '@capacitor/core';
+
+import { Plugins, StatusBarStyle } from '@capacitor/core';
+
+const { SplashScreen, StatusBar } = Plugins;
 
 //const { PushNotifications } = Plugins;
 //need to enable push notifications in Xcode
@@ -64,6 +68,7 @@ export default {
         this.schoolSelect(data);
       }
     });
+    StatusBar.setStyle({ style: StatusBarStyle.Light });
     SplashScreen.hide();
     //PushNotifications.register();
   },

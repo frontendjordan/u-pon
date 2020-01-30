@@ -1,5 +1,5 @@
 {
-  "appId": "com.upon.app",
+  "appId": "com.upon-ios.app",
   "appName": "U-Pon",
   "bundledWebRuntime": false,
   "npmClient": "npm",
