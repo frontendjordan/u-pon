@@ -23,6 +23,19 @@
 <script>
 import DealModal from '@/components/DealModal';
 import { Plugins } from '@capacitor/core';
+import { addIcons } from "ionicons";
+import { wine, pizza, pricetag, cut } from "ionicons/icons";
+
+addIcons({
+  "ios-wine": wine.ios,
+  "md-wine": wine.md,
+  "ios-pizza": pizza.ios,
+  "md-pizza": pizza.md,
+  "ios-pricetag": pricetag.ios,
+  "md-pricetag": pricetag.md,
+  "ios-cut": cut.ios,
+  "md-cut": cut.md
+});
 
 export default {
   name: 'venue-card',

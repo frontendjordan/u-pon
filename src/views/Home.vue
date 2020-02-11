@@ -60,6 +60,8 @@ export default {
   created() {
     this.getSchools().then(() => {
       if (this.hasDefaultSchool) {
+        let storageSchool = this.schools.find(school => school.name === localStorage.getItem('school'));
+        if (!storageSchool) this.clearDefaultSchool();
         let data = { target: { value: localStorage.getItem('school') } };
         this.schoolSelect(data);
       }
